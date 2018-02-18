@@ -65,6 +65,9 @@ ul,ol{
       transition: all .3s;
   }
 
+  .colors>li.black{
+      background: black;
+  }
   .colors>li.red{
       background: red;
   }
@@ -80,4 +83,25 @@ ul,ol{
   .colors>li.active{
       box-shadow: 0 0 10px rgba(0, 0, 0,0.95);
       transform: scale(1.2)
+  }
+
+  .sizes{
+      position: fixed;
+      right: 20px;top: 10px;
+      /* border: 1px solid red; */
+  }
+  .sizes > li{
+      margin: 20px 0;
+      /* border: 1px solid red; */
+  }
+  .sizes > .thin{
+      height: 0;
+      width: 20px;
+      border-top: 3px solid black;
+  }
+
+  .sizes > .thick{
+      height: 0;
+      width: 20px;
+      border-top: 6px solid black;
   }

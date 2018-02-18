@@ -1,5 +1,6 @@
 var yyy = document.getElementById('xxx');
 var context = yyy.getContext('2d');
+var lineWidth = 5;
 
 autoSetCanvasSize(yyy)//设置画布大小
 
@@ -16,38 +17,71 @@ var eraserEnabled = false
 //     eraserEnabled = false
 //     actions.className = 'actions'
 // }
-pen.onclick = function(){
+pen.onclick = function () {
     eraserEnabled = false;
     pen.classList.add('active')
     eraser.classList.remove('active')
 }
 
-eraser.onclick = function(){
+eraser.onclick = function () {
     eraserEnabled = true;
     eraser.classList.add('active')
     pen.classList.remove('active')
-    
+
 }
 
-red.onclick = function(){
+black.onclick = function () {
+    context.strokeStyle = 'black'
+    black.classList.add('active')
+    red.classList.remove('active')
+    green.classList.remove('active')
+    blue.classList.remove('active')
+}
+
+red.onclick = function () {
     context.strokeStyle = 'red'
     red.classList.add('active')
     green.classList.remove('active')
-    blue.classList.remove('active')    
+    blue.classList.remove('active')
+    black.classList.remove('active')
 }
 
-green.onclick = function(){
+green.onclick = function () {
     context.strokeStyle = 'green'
     red.classList.remove('active')
     green.classList.add('active')
-    blue.classList.remove('active')  
+    blue.classList.remove('active')
+    black.classList.remove('active')
 }
 
-blue.onclick = function(){
+blue.onclick = function () {
     context.strokeStyle = 'blue'
     red.classList.remove('active')
     green.classList.remove('active')
-    blue.classList.add('active')  
+    blue.classList.add('active')
+    black.classList.remove('active')
+}
+
+thin.onclick = function(){
+    lineWidth = 5
+}
+
+thick.onclick = function(){
+    lineWidth = 10
+}
+
+clear.onclick = function(){
+    context.clearRect(0,0,yyy.width,yyy.height)
+}
+
+download.onclick = function(){
+    var url =  yyy.toDataURL("image/png")
+    var a = document.createElement('a')
+    document.body.appendChild(a)
+    a.href = url
+    a.download = '我的画'
+    a.targer = '_blank'
+    a.click()
 }
 
 /******/
@@ -79,7 +113,7 @@ function drawLine(x1, y1, x2, y2) {
     context.beginPath();
     // context.strokeStyle = 'black'
     context.moveTo(x1, y1) // 起点
-    context.lineWidth = 5 // 线的粗细大小
+    context.lineWidth = lineWidth // 线的粗细大小
     context.lineTo(x2, y2) // 终点
     context.stroke()
     context.closePath()
@@ -96,7 +130,7 @@ function listenToUser(canvas) {
 
     if (document.body.ontouchstart !== undefined) {
         //触屏设备,进行特性检测
-        canvas.ontouchstart = function(e){
+        canvas.ontouchstart = function (e) {
             var x = e.touches[0].clientX
             var y = e.touches[0].clientY
             using = true
@@ -109,7 +143,7 @@ function listenToUser(canvas) {
                 }
             }
         }
-        canvas.ontouchmove = function(e){
+        canvas.ontouchmove = function (e) {
             var x = e.touches[0].clientX
             var y = e.touches[0].clientY
 
@@ -126,8 +160,8 @@ function listenToUser(canvas) {
                 lastPoint = newPoint
             }
         }
-        canvas.ontouchend = function(){
-            using = false            
+        canvas.ontouchend = function () {
+            using = false
             console.log('不摸了')
         }
     } else {

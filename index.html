@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="./style.css">
-    <script src="//at.alicdn.com/t/font_570816_k3aq9kbl06civn29.js"></script>
+    <script src="//at.alicdn.com/t/font_570816_bgfcc6ee4dcp7gb9.js"></script>
     <title>我的画板</title>
 </head>
 
@@ -19,12 +19,24 @@
         <svg class="icon" id="eraser">
             <use xlink:href="#icon-eraser"></use>
         </svg>
+        <svg class="icon" id="clear">
+            <use xlink:href="#icon-custom-clear"></use>
+        </svg>
+        <svg class="icon" id="download">
+                <use xlink:href="#icon-save"></use>
+            </svg>
     </div>
     <ol class="colors">
-        <li id="red" class="red active"></li>
+        <li id="black" class="black active"></li>
+        <li id="red" class="red"></li>
         <li id="green" class="green"></li>
         <li id="blue" class="blue"></li>
     </ol>
+    <ol class="sizes">
+        <li id="thin" class="thin"></li>
+        <li id="thick" class="thick"></li>
+    </ol>
+
     <script src="./main.js"></script>
 </body>
 
